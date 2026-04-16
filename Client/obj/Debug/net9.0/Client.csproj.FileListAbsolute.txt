@@ -1,0 +1,14 @@
+D:\Coding\C#\LTM\Client\bin\Debug\net9.0\Client.exe
+D:\Coding\C#\LTM\Client\bin\Debug\net9.0\Client.deps.json
+D:\Coding\C#\LTM\Client\bin\Debug\net9.0\Client.runtimeconfig.json
+D:\Coding\C#\LTM\Client\bin\Debug\net9.0\Client.dll
+D:\Coding\C#\LTM\Client\bin\Debug\net9.0\Client.pdb
+D:\Coding\C#\LTM\Client\obj\Debug\net9.0\Client.GeneratedMSBuildEditorConfig.editorconfig
+D:\Coding\C#\LTM\Client\obj\Debug\net9.0\Client.AssemblyInfoInputs.cache
+D:\Coding\C#\LTM\Client\obj\Debug\net9.0\Client.AssemblyInfo.cs
+D:\Coding\C#\LTM\Client\obj\Debug\net9.0\Client.csproj.CoreCompileInputs.cache
+D:\Coding\C#\LTM\Client\obj\Debug\net9.0\Client.dll
+D:\Coding\C#\LTM\Client\obj\Debug\net9.0\refint\Client.dll
+D:\Coding\C#\LTM\Client\obj\Debug\net9.0\Client.pdb
+D:\Coding\C#\LTM\Client\obj\Debug\net9.0\Client.genruntimeconfig.cache
+D:\Coding\C#\LTM\Client\obj\Debug\net9.0\ref\Client.dll
