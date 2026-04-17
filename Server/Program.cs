@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Net.NetworkInformation;
 using System.Linq;
 
+
 namespace ServerApplication
 {
     public class Program
@@ -18,6 +19,9 @@ namespace ServerApplication
         static List<Socket> clients = new List<Socket>();
         static void Main()
         {
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.InputEncoding = Encoding.UTF8;
+
             string ip = Dns.GetHostEntry(Dns.GetHostName())
             .AddressList
             .First(x => x.AddressFamily == AddressFamily.InterNetwork
@@ -61,7 +65,7 @@ namespace ServerApplication
 
                 // Nhận tên Client và thông báo tham gia
                 int recv = client.Receive(buffer);
-                string name = Encoding.Unicode.GetString(buffer, 0, recv);
+                string name = Encoding.UTF8.GetString(buffer, 0, recv);
 
                 clientNames[client] = name;
 
@@ -73,13 +77,16 @@ namespace ServerApplication
                     recv = client.Receive(buffer);
                     if (recv == 0) break;
 
-                    string msg = Encoding.Unicode.GetString(buffer, 0, recv);
+                    string msg = Encoding.UTF8.GetString(buffer, 0, recv);
                     Console.WriteLine(name + ": " +msg);
 
                     Broadcast(name + ": " + msg, client);
                 }
             }
-            catch { }
+            catch (Exception e) 
+            {
+                Console.WriteLine(e.ToString());
+            }
 
             // Khi client thoát
             if (clientNames.ContainsKey(client))
@@ -98,7 +105,7 @@ namespace ServerApplication
 
         static void Broadcast(string message, Socket sender)
         {
-            byte[] data = Encoding.Unicode.GetBytes(message);
+            byte[] data = Encoding.UTF8.GetBytes(message);
 
             foreach (Socket client in clients)
             {
@@ -108,7 +115,10 @@ namespace ServerApplication
                     {
                         client.Send(data);
                     }
-                    catch { }
+                    catch (Exception e) 
+                    {
+                        Console.WriteLine("Loi khi gui den " + client.RemoteEndPoint + ": " + e.Message);
+                    }
                 }
             }
         }

@@ -4,6 +4,8 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
+
+
 namespace ClientApplication
 {
     class Program
@@ -13,8 +15,14 @@ namespace ClientApplication
         static string currentInput = "";
         static object consoleLock = new object();
 
+        
+
         static void Main()
         {
+
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.InputEncoding = Encoding.UTF8;
+
             client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             // Nhập ip Server để kết nối
@@ -28,7 +36,7 @@ namespace ClientApplication
             // Gửi tên cho Server
             Console.Write("Nhap ten cua ban: ");
             string name = Console.ReadLine();
-            client.Send(Encoding.Unicode.GetBytes(name));
+            client.Send(Encoding.UTF8.GetBytes(name));
 
             // Bắt đầu Thread nhận tin
             Thread receiveThread = new Thread(ReceiveMessage);
@@ -53,7 +61,7 @@ namespace ClientApplication
 
                         string name_msg = currentInput;
                         // Gửi đi tên và message cho Server
-                        client.Send(Encoding.Unicode.GetBytes(name_msg));
+                        client.Send(Encoding.UTF8.GetBytes(name_msg));
                         break;
                     }
                     // Nếu nhấn Backspace thì xoá đi 1 ký tự trong curentInput 
@@ -87,7 +95,7 @@ namespace ClientApplication
                     if (received == 0) break;
 
                     // Nhận lấy tin nhắn từ Client
-                    string msg = Encoding.Unicode.GetString(buffer, 0, received);
+                    string msg = Encoding.UTF8.GetString(buffer, 0, received);
 
                     // Tmj dừng thread
                     lock (consoleLock)
