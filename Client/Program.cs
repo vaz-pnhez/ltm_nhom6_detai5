@@ -26,15 +26,15 @@ namespace ClientApplication
             client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             // Nhập ip Server để kết nối
-            Console.Write("Nhap IP server: ");
+            Console.Write("Nhập IP Server: ");
             string ipStr = Console.ReadLine();
             IPAddress ip = IPAddress.Parse(ipStr);
             IPEndPoint endPoint = new IPEndPoint(ip, 5000);
             client.Connect(endPoint);
-            Console.WriteLine("Da ket noi server!");
+            Console.WriteLine("Đã kết nối Server!\n");
 
             // Gửi tên cho Server
-            Console.Write("Nhap ten cua ban: ");
+            Console.Write("Nhập tên người dùng của bạn: ");
             string name = Console.ReadLine();
             client.Send(Encoding.UTF8.GetBytes(name));
 
@@ -92,7 +92,16 @@ namespace ClientApplication
                 try
                 {
                     int received = client.Receive(buffer);
-                    if (received == 0) break;
+
+                    // Xử lý khi Server ngắt kết nối
+                    if (received == 0)
+                    {
+                        lock (consoleLock) {
+                            Console.WriteLine();
+                            Console.WriteLine("\n[Server đã ngắt kết nối!]");
+                        }
+                        break;
+                    }
 
                     // Nhận lấy tin nhắn từ Client
                     string msg = Encoding.UTF8.GetString(buffer, 0, received);
@@ -110,7 +119,31 @@ namespace ClientApplication
                         Console.Write("> " + currentInput);
                     }
                 }
-                catch { break; }
+
+                // Xử lý Server ngắt kết nối
+                catch (SocketException) 
+                {
+                    lock (consoleLock) 
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("\n[Server đã ngắt kết nối!]");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lock (consoleLock) 
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("\n[Lỗi]: " + ex.Message);
+                    }
+                }
+                finally
+                {
+                    Console.WriteLine("\nNhấn bất kì để thoát...");
+                    Console.ReadKey();
+                    client.Close();
+                    Environment.Exit(0);
+                }
             }
         }
     }

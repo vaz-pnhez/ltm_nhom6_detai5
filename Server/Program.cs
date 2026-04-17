@@ -28,7 +28,7 @@ namespace ServerApplication
              && !IPAddress.IsLoopback(x))
     .ToString();
 
-            Console.WriteLine("Server dang chay tai: " + ip + ":5000");
+            Console.WriteLine("Server đang chạy tại: " + ip + ":5000");
 
             // Khai bao dia chi ip
             IPAddress ipadd = IPAddress.Any;
@@ -41,13 +41,13 @@ namespace ServerApplication
             skServer.Bind(ipend);
             skServer.Listen(10);
 
-            Console.WriteLine("Server dang cho Client...");
+            Console.WriteLine("Server đang chờ Client...");
             while (true)
             {
                 Socket skClient = skServer.Accept();
                 clients.Add(skClient);
 
-                Console.WriteLine("Chap nhan ket noi tu " + skClient.RemoteEndPoint);
+                Console.WriteLine("Chấp nhận kết nối từ " + skClient.RemoteEndPoint);
 
                 Thread t = new Thread(HandleThread);
                 t.IsBackground = true;
@@ -69,9 +69,9 @@ namespace ServerApplication
 
                 clientNames[client] = name;
 
-                Console.WriteLine(name + " da tham gia");
+                Console.WriteLine(name + " đã tham gia");
 
-                Broadcast(name + " da tham gia phong chat", client);
+                Broadcast(name + " đã tham gia phòng chat", client);
                 while (true)
                 {
                     recv = client.Receive(buffer);
@@ -92,9 +92,9 @@ namespace ServerApplication
             if (clientNames.ContainsKey(client))
             {
                 string name = clientNames[client];
-                Console.WriteLine(name + " da roi");
+                Console.WriteLine(name + " đã rời");
 
-                Broadcast(name + " da roi phong chat", client);
+                Broadcast(name + " đã rời phòng chat", client);
 
                 clientNames.Remove(client);
             }
@@ -117,7 +117,8 @@ namespace ServerApplication
                     }
                     catch (Exception e) 
                     {
-                        Console.WriteLine("Loi khi gui den " + client.RemoteEndPoint + ": " + e.Message);
+                        Console.WriteLine("Lỗi khi gửi đến " + client.RemoteEndPoint + ": " + e.Message);
+                        break;
                     }
                 }
             }
