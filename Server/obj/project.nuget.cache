@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "/AuEg0gD4ko=",
+  "dgSpecHash": "jPbALFOziHc=",
   "success": true,
-  "projectFilePath": "D:\\Coding\\C#\\LTM\\Server\\Server.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Coding\\C#\\BTL\\Server\\Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.15\\microsoft.windowsdesktop.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.15\\microsoft.netcore.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.15\\microsoft.aspnetcore.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.15\\microsoft.netcore.app.host.win-x64.9.0.15.nupkg.sha512"
+  ],
   "logs": []
 }
