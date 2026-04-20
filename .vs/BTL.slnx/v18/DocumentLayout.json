@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Coding\\C#\\LTM\\BTL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D91D8B48-97B1-4DAF-BE55-A89F156BEA77}|Server\\Server.csproj|d:\\coding\\c#\\ltm\\btl\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D91D8B48-97B1-4DAF-BE55-A89F156BEA77}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3461765F-60A1-21BC-764E-FC799869FE2F}|Server\\Server.csproj|d:\\coding\\c#\\ltm\\btl\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3461765F-60A1-21BC-764E-FC799869FE2F}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C7DEF55-93A4-4801-82E8-A118C9B2DE6D}|Client\\Client.csproj|d:\\coding\\c#\\ltm\\btl\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C7DEF55-93A4-4801-82E8-A118C9B2DE6D}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AE7EEA74-2FE0-136F-D797-854FD87E022A}|Client\\Client.csproj|d:\\coding\\c#\\ltm\\btl\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7EEA74-2FE0-136F-D797-854FD87E022A}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,8 +34,7 @@
               "RelativeToolTip": "Client\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAIMAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T10:12:52.842Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T10:12:52.842Z"
             },
             {
               "$type": "Document",
@@ -45,7 +44,7 @@
               "RelativeDocumentMoniker": "Server\\Program.cs",
               "ToolTip": "D:\\Coding\\C#\\LTM\\BTL\\Server\\Program.cs",
               "RelativeToolTip": "Server\\Program.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAuwBwAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAuwBwAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-20T10:12:09.056Z",
               "EditorCaption": ""
