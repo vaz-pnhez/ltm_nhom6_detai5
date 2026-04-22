@@ -19,16 +19,32 @@ namespace ServerApplication
         static List<Socket> clients = new List<Socket>();
         static void Main()
         {
+            Console.Title = "Server Chat";
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.UTF8;
 
-            string ip = Dns.GetHostEntry(Dns.GetHostName())
-            .AddressList
-            .First(x => x.AddressFamily == AddressFamily.InterNetwork
-             && !IPAddress.IsLoopback(x))
-    .ToString();
+            var ips = getAllUsableIPs();
 
-            Console.WriteLine("Server đang chạy tại: " + ip + ":5000");
+            Console.WriteLine("Server đang chạy tại:");
+
+            foreach (var ip in ips) 
+            {
+                if (ip.StartsWith("26.")) 
+                    Console.WriteLine("[Radmin] " + ip + ":5000");
+                else if (ip.StartsWith("192.168.") || ip.StartsWith("10.") || ip.StartsWith("172."))
+                    Console.WriteLine("[LAN] " + ip + ":5000");
+                else
+                    Console.WriteLine("[Other] " + ip + ":5000");
+            }
+
+
+            //    string ip = Dns.GetHostEntry(Dns.GetHostName())
+            //        .AddressList
+            //        .First(x => x.AddressFamily == AddressFamily.InterNetwork
+            //         && !IPAddress.IsLoopback(x))
+            //.ToString();
+
+            //        Console.WriteLine("Server đang chạy tại: " + ip + ":5000");
 
             // Khai bao dia chi ip
             IPAddress ipadd = IPAddress.Any;
@@ -55,6 +71,46 @@ namespace ServerApplication
 
             }
         }
+
+        // Hàm lấy ra tất cả các địa chỉ IP có thể sử dụng trên máy, loại bỏ loopback và adapter ảo
+        public static List<string> getAllUsableIPs()
+        {
+            var result = new List<string>();
+
+            var interfaces = NetworkInterface.GetAllNetworkInterfaces()
+                .Where(n =>
+                    n.OperationalStatus == OperationalStatus.Up &&
+                    n.NetworkInterfaceType != NetworkInterfaceType.Loopback);
+
+            foreach (var ni in interfaces)
+            {
+                // Bỏ qua các adapter ảo như VMware, VirtualBox
+                string name = ni.Name.ToLower();
+                string description = ni.Description.ToLower();
+
+                if (name.Contains("vmware") || name.Contains("virtual") ||
+                    description.Contains("vmware") || description.Contains("virtual"))
+                    continue;
+
+                var ipProps = ni.GetIPProperties();
+
+                foreach (var addr in ipProps.UnicastAddresses)
+                {
+                    if (addr.Address.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        string ip = addr.Address.ToString();
+
+                        // Kiểm tra xem IP có phải là loopback hay không
+                        if (ip.StartsWith("127.")) continue;
+
+                        result.Add(ip);
+                    }
+                }
+            }
+
+            return result.Distinct().ToList();
+        }
+
         static void HandleThread(object obj)
         {
             Socket client = (Socket)obj;

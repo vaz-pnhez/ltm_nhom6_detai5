@@ -12,3 +12,4 @@ D:\Coding\C#\LTM\BTL\Client\obj\Debug\net10.0\refint\Client.dll
 D:\Coding\C#\LTM\BTL\Client\obj\Debug\net10.0\Client.pdb
 D:\Coding\C#\LTM\BTL\Client\obj\Debug\net10.0\Client.genruntimeconfig.cache
 D:\Coding\C#\LTM\BTL\Client\obj\Debug\net10.0\ref\Client.dll
+D:\Coding\C#\LTM\BTL\Client\obj\Debug\net10.0\Client.sourcelink.json

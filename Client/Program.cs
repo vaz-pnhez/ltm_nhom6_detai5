@@ -19,7 +19,7 @@ namespace ClientApplication
 
         static void Main()
         {
-
+            Console.Title = "Client Chat";
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.UTF8;
 
@@ -37,6 +37,7 @@ namespace ClientApplication
             Console.Write("Nhập tên người dùng của bạn: ");
             string name = Console.ReadLine();
             client.Send(Encoding.UTF8.GetBytes(name));
+            Console.Title = name;
 
             // Bắt đầu Thread nhận tin
             Thread receiveThread = new Thread(ReceiveMessage);
@@ -144,6 +145,7 @@ namespace ClientApplication
                 Console.WriteLine("\nNhấn bất kì để thoát...");
                 Console.ReadKey();
                 client.Close();
+                
                 Environment.Exit(0);
             }
         }
